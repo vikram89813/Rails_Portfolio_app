@@ -6,6 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+3.times do |topic|
+    Topic.create!(
+        title: "Topic #{topic}"
+    )
+end
+
+puts "three topics created!"
+
 10.times do |blog|
     Blog.create!(
         title: "My blog post #{blog}",
@@ -19,7 +27,8 @@
         owing to the claims of duty or the obligations of business it will frequently occur that pleasures 
         have to be repudiated and annoyances accepted. The wise man therefore always holds in these 
         matters to this principle of selection: he rejects pleasures to secure other greater pleasures, 
-        or else he endures pains to avoid worse pains."
+        or else he endures pains to avoid worse pains.",
+        topic_id: Topic.last.id
     )
 end 
 
@@ -34,10 +43,20 @@ end
 
 puts "5 skills created!"
 
-9.times do |portfolio|
+8.times do |portfolio|
     Portfolio.create!(
         title: "Portfolio title: #{portfolio}",
-        subtitle: "My Greate Service",
+        subtitle: "Ruby On Rails",
+        body: "matters to this principle of selection: he rejects pleasures to secure other",
+        main_image: "https://via.placeholder.com/650",
+        thumb_image: "https://via.placeholder.com/150"
+    )
+end
+
+1.times do |portfolio|
+    Portfolio.create!(
+        title: "Portfolio title: #{portfolio}",
+        subtitle: "Angular",
         body: "matters to this principle of selection: he rejects pleasures to secure other",
         main_image: "https://via.placeholder.com/650",
         thumb_image: "https://via.placeholder.com/150"
@@ -45,3 +64,11 @@ puts "5 skills created!"
 end
 
 puts "9 portfolio item created!"
+
+3.times do |tech|
+    Portfolio.last.technologies.create!(
+        name: "Technology #{tech}"
+    )
+end
+
+puts "3 technology items created"
